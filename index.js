@@ -9,7 +9,9 @@ const DB_NAME = "nodeRestShop";
 /**replicating __dirname feature in ES6 module */
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-/**Back up folder and filename */
+/**Back up folder and filename.
+ * optional argument --host --port
+ */
 const BACKUP_PATH = path.join(__dirname, "backup", `${DB_NAME}.gzip`);
 
 /**cron job scheduled, to back up every 5 sec.
