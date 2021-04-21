@@ -1,10 +1,13 @@
-import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
 import cron from "node-cron";
 import { spawn } from "child_process";
 
 const DB_NAME = "nodeRestShop";
-const __dirname = path.dirname("backup");
-const BACKUP_PATH = path.join(__dirname, `${DB_NAME}.gzip`);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const BACKUP_PATH = path.join(__dirname, "backup", `${DB_NAME}.gzip`);
+
+cron.schedule("*/5 * * * * *", () => backupDB());
 
 const backupDB = () => {
   const child = spawn("mongodump", [
@@ -27,5 +30,3 @@ const backupDB = () => {
     else console.log("Backup is successfull.");
   });
 };
-
-backupDB();
