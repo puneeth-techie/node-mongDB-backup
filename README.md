@@ -32,6 +32,7 @@ You can also install and setup Babel if you would like.
 
 ```
 ### Install Dependencies
+
 ```
 
 npm install
